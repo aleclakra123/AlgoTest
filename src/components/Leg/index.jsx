@@ -118,12 +118,12 @@ export default function Leg({ segmentState, copyLeg, deleteLeg, editLeg }) {
         <br />
         <Row>
           <Col>
-            <Badge bg="info" text="dark" className="badges" onClick={copyLeg}>
+            <Badge bg="light" text="dark" className="badges" onClick={copyLeg}>
               📋
             </Badge>
           </Col>
           <Col>
-            <Badge bg="info" text="dark" className="badges" onClick={deleteLeg}>
+            <Badge bg="light" text="dark" className="badges" onClick={deleteLeg}>
               ❌
             </Badge>
           </Col>
