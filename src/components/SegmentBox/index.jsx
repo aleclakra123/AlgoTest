@@ -85,7 +85,7 @@ export default function SegmentBox({
               })}
             </Form.Select>
           </Form.Group>
-          {Number(segmentState.strikeCriteria) ===
+          {segmentState.strikeCriteria ===
             StrikeCriteria.STRIKE_TYPE && (
             <Form.Group className="mb-3" controlId="strikeType">
               {!leg && <Form.Label>Strike Type</Form.Label>}
@@ -103,7 +103,7 @@ export default function SegmentBox({
               </Form.Select>
             </Form.Group>
           )}
-          {Number(segmentState.strikeCriteria) ===
+          {segmentState.strikeCriteria ===
             StrikeCriteria.PREMIUM_RANGE && (
             <>
               <Form.Group className="mb-3" controlId="lowerRange">
@@ -126,7 +126,7 @@ export default function SegmentBox({
               </Form.Group>
             </>
           )}
-          {Number(segmentState.strikeCriteria) ===
+          {segmentState.strikeCriteria ===
             StrikeCriteria.CLOSEST_PREMIUM && (
             <Form.Group className="mb-3" controlId="premium">
               {!leg && <Form.Label>Premium</Form.Label>}
@@ -138,7 +138,7 @@ export default function SegmentBox({
               />
             </Form.Group>
           )}
-          {Number(segmentState.strikeCriteria) ===
+          {segmentState.strikeCriteria ===
             StrikeCriteria.STRADDLE_WIDTH && (
             <>
               <Form.Group className="mb-3" controlId="atmStrike">
