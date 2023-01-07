@@ -8,6 +8,7 @@ import {
   PositionType,
   SegmentType,
   StrikeCriteria,
+  StrikeType,
 } from "../../enums";
 import SegmentBox from "../SegmentBox";
 
@@ -18,35 +19,20 @@ export default function Segment({ segmentMode, addLeg, cancelLeg }) {
     optionType: OptionType.PUT,
     expiry: IntervalType.WEEKLY,
     strikeCriteria: StrikeCriteria.STRIKE_TYPE,
+    strikeType: StrikeType.ATM,
+    lowerRange: 50,
+    premium: 50,
+    upperRange: 200
   });
-  useEffect(() => {
-    switch (segmentMode) {
-      case SegmentType.FUTURES:
-        setSegmentState({
-          totalLot: 1,
-          position: PositionType.BUY,
-        });
-        break;
-      case SegmentType.OPTIONS:
-        setSegmentState({
-          totalLot: 1,
-          position: PositionType.BUY,
-          optionType: OptionType.PUT,
-          expiry: IntervalType.WEEKLY,
-          strikeCriteria: StrikeCriteria.STRIKE_TYPE,
-        });
-        break;
-      default:
-        setSegmentState({});
-    }
-  }, [segmentMode]);
 
   const segmentChange = (e) => {
     const { id, value } = e.target;
-    setSegmentState({
+    const payload = {
       ...segmentState,
       [id]: value,
-    });
+    };
+
+    setSegmentState(payload);
   };
 
   return (
