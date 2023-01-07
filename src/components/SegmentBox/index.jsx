@@ -8,7 +8,7 @@ import {
   strikeCriteriaTypes,
   strikeTypes,
 } from "../../types";
-import { SegmentType, StrikeCriteria } from "../../enums";
+import { SegmentType, StrikeCriteria, AdjustmentType } from "../../enums";
 import "./index.css";
 
 export default function SegmentBox({
@@ -17,7 +17,6 @@ export default function SegmentBox({
   segmentMode,
   leg,
 }) {
-
   return (
     <div className="formContainer">
       {leg && "Lots"}
@@ -86,7 +85,8 @@ export default function SegmentBox({
               })}
             </Form.Select>
           </Form.Group>
-          {Number(segmentState.strikeCriteria) === StrikeCriteria.STRIKE_TYPE && (
+          {Number(segmentState.strikeCriteria) ===
+            StrikeCriteria.STRIKE_TYPE && (
             <Form.Group className="mb-3" controlId="strikeType">
               {!leg && <Form.Label>Strike Type</Form.Label>}
               <Form.Select
@@ -103,7 +103,8 @@ export default function SegmentBox({
               </Form.Select>
             </Form.Group>
           )}
-          {Number(segmentState.strikeCriteria) === StrikeCriteria.PREMIUM_RANGE && (
+          {Number(segmentState.strikeCriteria) ===
+            StrikeCriteria.PREMIUM_RANGE && (
             <>
               <Form.Group className="mb-3" controlId="lowerRange">
                 {!leg && <Form.Label>Lower Range</Form.Label>}
@@ -125,16 +126,41 @@ export default function SegmentBox({
               </Form.Group>
             </>
           )}
-          {Number(segmentState.strikeCriteria) === StrikeCriteria.CLOSEST_PREMIUM && (
+          {Number(segmentState.strikeCriteria) ===
+            StrikeCriteria.CLOSEST_PREMIUM && (
             <Form.Group className="mb-3" controlId="premium">
-            {!leg && <Form.Label>Premium</Form.Label>}
-            <Form.Control
-              type="number"
-              min="1"
-              value={segmentState.premium}
-              onChange={segmentChange}
-            />
-          </Form.Group>
+              {!leg && <Form.Label>Premium</Form.Label>}
+              <Form.Control
+                type="number"
+                min="1"
+                value={segmentState.premium}
+                onChange={segmentChange}
+              />
+            </Form.Group>
+          )}
+          {Number(segmentState.strikeCriteria) ===
+            StrikeCriteria.STRADDLE_WIDTH && (
+            <>
+              <Form.Group className="mb-3" controlId="atmStrike">
+                {!leg && <Form.Label>ATM Strike</Form.Label>}
+                <Form.Select
+                  value={segmentState.atmStrike}
+                  onChange={segmentChange}
+                >
+                  <option value={AdjustmentType.PLUS}>+</option>
+                  <option value={AdjustmentType.MINUS}>-</option>
+                </Form.Select>
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="adjustmentFactor">
+                {!leg && <Form.Label>x ATM Straddle Price</Form.Label>}
+                <Form.Control
+                  type="number"
+                  min="1.5"
+                  value={segmentState.adjustmentFactor}
+                  onChange={segmentChange}
+                />
+              </Form.Group>
+            </>
           )}
         </>
       )}

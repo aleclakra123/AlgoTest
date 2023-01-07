@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "./index.css";
 import {
+  AdjustmentType,
   IntervalType,
   OptionType,
   PositionType,
-  SegmentType,
   StrikeCriteria,
   StrikeType,
 } from "../../enums";
@@ -22,7 +22,9 @@ export default function Segment({ segmentMode, addLeg, cancelLeg }) {
     strikeType: StrikeType.ATM,
     lowerRange: 50,
     premium: 50,
-    upperRange: 200
+    upperRange: 200,
+    atmStrike: AdjustmentType.MINUS,
+    adjustmentFactor: 1.5
   });
 
   const segmentChange = (e) => {
