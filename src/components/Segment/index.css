@@ -3,3 +3,13 @@
     justify-content: space-around;
     flex-wrap: wrap;
 }
+
+.leg-buttons{
+    display: flex;
+    justify-content: center;
+}
+
+.leg-btn {
+    margin-left: 50px;
+    margin-right: 50px;
+}

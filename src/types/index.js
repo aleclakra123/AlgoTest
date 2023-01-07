@@ -3,7 +3,7 @@ import {IntervalType, OptionType, PositionType, SegmentType, StrikeCriteria} fro
 
 export const optionTypes = [
     {type: "Call", value: OptionType.CALL },
-    {type: "PUT", value: OptionType.PUT},
+    {type: "Put", value: OptionType.PUT},
 ];
 
 export const intervalTypes = [
@@ -13,12 +13,12 @@ export const intervalTypes = [
 
 export const segmentTypes = [
     {type: "Futures", value: SegmentType.FUTURES },
-    {type: "OPTIONS", value: SegmentType.OPTIONS},
+    {type: "Options", value: SegmentType.OPTIONS},
 ];
 
 export const positionTypes = [
-    {type: "SELL", value: PositionType.SELL },
-    {type: "BUY", value: PositionType.BUY},
+    {type: "Sell", value: PositionType.SELL },
+    {type: "Buy", value: PositionType.BUY},
 ];
 
 export const strikeCriteriaTypes = [
