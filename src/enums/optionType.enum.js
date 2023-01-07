@@ -1,4 +1,4 @@
 export const OptionType = {
-    CALL: 1,
-    PUT: 2
+    CALL: "LegType.CE",
+    PUT: "LegType.PE"
 }

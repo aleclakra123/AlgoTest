@@ -1,6 +1,6 @@
 export const StrikeCriteria = {
-    STRIKE_TYPE: 1,
-    PREMIUM_RANGE: 2,
-    CLOSEST_PREMIUM: 3,
-    STRADDLE_WIDTH: 4
+    STRIKE_TYPE: "EntryType.EntryByStrikeType",
+    PREMIUM_RANGE: "EntryType.EntryByPremiumRange",
+    CLOSEST_PREMIUM: "EntryType.EntryByPremium",
+    STRADDLE_WIDTH: "EntryType.EntryByStraddlePrice"
 }

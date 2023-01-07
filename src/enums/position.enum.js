@@ -1,4 +1,4 @@
 export const PositionType = {
-    SELL: 1,
-    BUY: 2
+    SELL: "PositionType.Sell",
+    BUY: "PositionType.Buy"
 }

@@ -1,4 +1,4 @@
 export const AdjustmentType = {
-    PLUS: 1,
-    MINUS: 2
+    PLUS: "AdjustmentType.Plus",
+    MINUS: "AdjustmentType.Minus"
 }
