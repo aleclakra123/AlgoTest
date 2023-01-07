@@ -5,10 +5,12 @@ import "./index.css";
 import {
   AdjustmentType,
   IntervalType,
+  MomentumType,
   OptionType,
   PositionType,
   StrikeCriteria,
   StrikeType,
+  TrailStopLossType,
 } from "../../enums";
 import SegmentBox from "../SegmentBox";
 
@@ -24,7 +26,14 @@ export default function Segment({ segmentMode, addLeg, cancelLeg }) {
     premium: 50,
     upperRange: 200,
     atmStrike: AdjustmentType.MINUS,
-    adjustmentFactor: 1.5
+    adjustmentFactor: 1.5,
+    simpleMomentum: false,
+    simpleMomentumValue: 0,
+    simpleMomentumType: MomentumType.POINTS_UP,
+    trailStopLoss: false,
+    trailStopLossValue1: 0,
+    trailStopLossValue2: 0,
+    trailStopLossType: TrailStopLossType.POINTS
   });
 
   const segmentChange = (e) => {
