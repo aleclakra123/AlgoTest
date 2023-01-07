@@ -1,5 +1,4 @@
-import {IntervalType, OptionType, PositionType, SegmentType, StrikeCriteria, StrikeType} from  "../enums";
-
+import {IntervalType, OptionType, PositionType, SegmentType, StrikeCriteria, StrikeType, TrailStopLossType, MomentumType} from  "../enums";
 
 export const optionTypes = [
     {type: "Call", value: OptionType.CALL },
@@ -193,4 +192,20 @@ export const strikeTypes = [
         "type": "OTM1",
         "value": StrikeType.OTM1
     }
+]
+
+export const momentumTypes = [
+    {type: "Points ↑", value: MomentumType.POINTS_UP},
+    {type: "Points ↓", value: MomentumType.POINTS_DOWN},
+    {type: "Percentage ↑", value: MomentumType.PERCENTAGE_UP},
+    {type: "Percentage ↓", value: MomentumType.PERCENTAGE_DOWN},
+    {type: "Underlying Points ↑", value: MomentumType.UNDERLYING_POINTS_UP},
+    {type: "Underlying Points ↓", value: MomentumType.UNDERLYING_POINTS_DOWN},
+    {type: "Underlying Percentage ↑", value: MomentumType.UNDERLYING_PERCENTAGE_UP},
+    {type: "Underlying Percentage ↓", value: MomentumType.UNDERLYING_PERCENTAGE_DOWN},
+]
+
+export const trailStopLossTypes = [
+    {type: "Points", value: TrailStopLossType.POINTS},
+    {type: "Percentage", value: TrailStopLossType.PERCENTAGE}
 ]
