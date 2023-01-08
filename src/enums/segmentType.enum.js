@@ -1,4 +1,4 @@
 export const SegmentType = {
-    FUTURES: 1,
-    OPTIONS: 2
+    FUTURES: "SegmentType.Futures",
+    OPTIONS: "SegmentType.Options"
 }

@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import ToggleButton from "react-bootstrap/ToggleButton";
-import Segment from "../Segment";
+import Segment from "../../components/Segment";
 import { segmentTypes } from "../../types";
 import { SegmentType } from "../../enums";
-import Leg from "../Leg";
+import Leg from "../../components/Leg";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import { Button, Card, Col } from "react-bootstrap";
+import {db} from "../../firebase.js";
+import { collection, addDoc } from "firebase/firestore";
 import "./index.css";
 
-export default function HeadLeg() {
+export default function LegBuilder() {
   const [legs, setLegs] = useState([]);
   const [segmentValue, setSegmentValue] = useState(SegmentType.OPTIONS);
   const [showAddLegButton, setShowAddLegButton] = useState(false);
@@ -40,6 +42,23 @@ export default function HeadLeg() {
     setShowAddLegButton(!showAddLegButton);
   };
 
+
+  const saveLegs = async ()=>{
+    try {
+      const legRef = collection(db, "legs");
+      await Promise.all(legs.map((leg)=>{
+        return addDoc(legRef, leg);
+      }));
+      console.log("Legs added to firestore: ");
+    } catch (e) {
+      console.error("Error adding legs: ", e);
+    }
+  }
+
+  const fetchLegs = ()=>{
+
+  }
+
   return (
     <Container>
       {!showAddLegButton && (
@@ -62,7 +81,7 @@ export default function HeadLeg() {
                     value={segment.value}
                     checked={segmentValue === segment.value}
                     onChange={(e) => {
-                      setSegmentValue(Number(e.currentTarget.value));
+                      setSegmentValue(e.currentTarget.value);
                     }}
                   >
                     {segment.type}
@@ -102,6 +121,13 @@ export default function HeadLeg() {
           />
         );
       })}
+      <br /><br />
+      <Row>
+        <ButtonGroup>
+          <Button disabled={legs.length === 0} onClick={saveLegs}>Save Legs</Button>
+          <Button onClick={fetchLegs} variant="outline-primary">Fetch Legs</Button>
+        </ButtonGroup>
+      </Row>
     </Container>
   );
 }

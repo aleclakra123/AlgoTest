@@ -9,10 +9,10 @@ import { momentumTypes, trailStopLossTypes } from "../../types";
 export default function Leg({ segmentState, copyLeg, deleteLeg, editLeg }) {
   const segmentChange = (e) => {
     const { id, value, type } = e.target;
-    if(type === "checkbox") {
-      editLeg(id, e.target.checked);
+    if (type === "checkbox") {
+      editLeg && editLeg(id, e.target.checked);
     } else {
-      editLeg(id, value);
+      editLeg && editLeg(id, value);
     }
   };
 
@@ -29,8 +29,9 @@ export default function Leg({ segmentState, copyLeg, deleteLeg, editLeg }) {
           <Col>
             <Form.Check
               type="checkbox"
-              id="simpleMomentum"
+              id="SimpleMomentum"
               label="Simple Momentum"
+              checked={segmentState.simpleMomentum}
               value={segmentState.simpleMomentum}
               onChange={segmentChange}
             />
@@ -41,7 +42,7 @@ export default function Leg({ segmentState, copyLeg, deleteLeg, editLeg }) {
               disabled={!segmentState.simpleMomentum}
               value={segmentState.simpleMomentumType}
               onChange={segmentChange}
-              id="simpleMomentumType"
+              id="SimpleMomentumType"
             >
               {momentumTypes.map(({ type, value }) => {
                 return (
@@ -58,7 +59,7 @@ export default function Leg({ segmentState, copyLeg, deleteLeg, editLeg }) {
               size="sm"
               type="number"
               min="0"
-              id="simpleMomentumValue"
+              id="SimpleMomentumValue"
               value={segmentState.simpleMomentumValue}
               onChange={segmentChange}
             />
@@ -69,8 +70,9 @@ export default function Leg({ segmentState, copyLeg, deleteLeg, editLeg }) {
           <Col>
             <Form.Check
               type="checkbox"
-              id="trailStopLoss"
+              id="TrailStopLoss"
               label="Trail SL"
+              checked={segmentState.trailStopLoss}
               value={segmentState.trailStopLoss}
               onChange={segmentChange}
             />
@@ -81,7 +83,7 @@ export default function Leg({ segmentState, copyLeg, deleteLeg, editLeg }) {
               size="sm"
               value={segmentState.trailStopLossType}
               onChange={segmentChange}
-              id="trailStopLossType"
+              id="TrailStopLossType"
             >
               {trailStopLossTypes.map(({ type, value }) => {
                 return (
@@ -98,7 +100,7 @@ export default function Leg({ segmentState, copyLeg, deleteLeg, editLeg }) {
               size="sm"
               type="number"
               min="0"
-              id="trailStopLossValue1"
+              id="TrailStopLossValue1"
               value={segmentState.trailStopLossValue1}
               onChange={segmentChange}
             />
@@ -109,25 +111,37 @@ export default function Leg({ segmentState, copyLeg, deleteLeg, editLeg }) {
               size="sm"
               type="number"
               min="0"
-              id="trailStopLossValue2"
+              id="TrailStopLossValue2"
               value={segmentState.trailStopLossValue2}
               onChange={segmentChange}
             />
           </Col>
         </Row>
         <br />
-        <Row>
-          <Col>
-            <Badge bg="light" text="dark" className="badges" onClick={copyLeg}>
-              📋
-            </Badge>
-          </Col>
-          <Col>
-            <Badge bg="light" text="dark" className="badges" onClick={deleteLeg}>
-              ❌
-            </Badge>
-          </Col>
-        </Row>
+        {copyLeg && deleteLeg && (
+          <Row>
+            <Col>
+              <Badge
+                bg="light"
+                text="dark"
+                className="badges"
+                onClick={copyLeg}
+              >
+                📋 Copy
+              </Badge>
+            </Col>
+            <Col>
+              <Badge
+                bg="light"
+                text="dark"
+                className="badges"
+                onClick={deleteLeg}
+              >
+                ❌ Remove
+              </Badge>
+            </Col>
+          </Row>
+        )}
       </Card.Header>
     </Card>
   );

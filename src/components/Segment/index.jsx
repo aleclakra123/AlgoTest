@@ -16,24 +16,24 @@ import SegmentBox from "../SegmentBox";
 
 export default function Segment({ segmentMode, addLeg, cancelLeg }) {
   const [segmentState, setSegmentState] = useState({
-    totalLot: 1,
-    position: PositionType.BUY,
-    optionType: OptionType.PUT,
-    expiry: IntervalType.WEEKLY,
-    strikeCriteria: StrikeCriteria.STRIKE_TYPE,
-    strikeType: StrikeType.ATM,
-    lowerRange: 50,
-    premium: 50,
-    upperRange: 200,
-    atmStrike: AdjustmentType.MINUS,
-    adjustmentFactor: 1.5,
-    simpleMomentum: false,
-    simpleMomentumValue: 0,
-    simpleMomentumType: MomentumType.POINTS_UP,
-    trailStopLoss: false,
-    trailStopLossValue1: 0,
-    trailStopLossValue2: 0,
-    trailStopLossType: TrailStopLossType.POINTS
+    Lots: 1,
+    PositionType: PositionType.BUY,
+    OptionType: OptionType.PUT,
+    ExpiryKind: IntervalType.WEEKLY,
+    EntryType: StrikeCriteria.STRIKE_TYPE,
+    StrikeParameter: StrikeType.ATM,
+    LowerRange: 50,
+    Premium: 50,
+    UpperRange: 200,
+    AtmStrike: AdjustmentType.MINUS,
+    AdjustmentFactor: 1.5,
+    SimpleMomentum: false,
+    SimpleMomentumValue: 0,
+    SimpleMomentumType: MomentumType.POINTS_UP,
+    TrailStopLoss: false,
+    TrailStopLossValue1: 0,
+    TrailStopLossValue2: 0,
+    TrailStopLossType: TrailStopLossType.POINTS
   });
 
   const segmentChange = (e) => {

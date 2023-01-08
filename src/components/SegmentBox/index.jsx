@@ -20,18 +20,18 @@ export default function SegmentBox({
   return (
     <div className="formContainer">
       {leg && "Lots"}
-      <Form.Group className="mb-3" controlId="totalLot">
+      <Form.Group className="mb-3" controlId="Lots">
         {!leg && <Form.Label>Total Lot</Form.Label>}
         <Form.Control
           type="number"
           min="1"
-          value={segmentState.totalLot}
+          value={segmentState.Lots}
           onChange={segmentChange}
         />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="position">
+      <Form.Group className="mb-3" controlId="PositionType">
         {!leg && <Form.Label>Position</Form.Label>}
-        <Form.Select value={segmentState.position} onChange={segmentChange}>
+        <Form.Select value={segmentState.PositionType} onChange={segmentChange}>
           {positionTypes.map(({ type, value }) => {
             return (
               <option value={value} key={value}>
@@ -41,12 +41,12 @@ export default function SegmentBox({
           })}
         </Form.Select>
       </Form.Group>
-      {Number(segmentMode) === SegmentType.OPTIONS && (
+      {segmentMode === SegmentType.OPTIONS && (
         <>
-          <Form.Group className="mb-3" controlId="optionType">
+          <Form.Group className="mb-3" controlId="OptionType">
             {!leg && <Form.Label>Option Type</Form.Label>}
             <Form.Select
-              value={segmentState.optionType}
+              value={segmentState.OptionType}
               onChange={segmentChange}
             >
               {optionTypes.map(({ type, value }) => {
@@ -58,9 +58,9 @@ export default function SegmentBox({
               })}
             </Form.Select>
           </Form.Group>
-          <Form.Group className="mb-3" controlId="expiry">
+          <Form.Group className="mb-3" controlId="ExpiryKind">
             {!leg && <Form.Label>Expiry</Form.Label>}
-            <Form.Select value={segmentState.expiry} onChange={segmentChange}>
+            <Form.Select value={segmentState.ExpiryKind} onChange={segmentChange}>
               {intervalTypes.map(({ type, value }) => {
                 return (
                   <option value={value} key={value}>
@@ -70,10 +70,10 @@ export default function SegmentBox({
               })}
             </Form.Select>
           </Form.Group>
-          <Form.Group className="mb-3" controlId="strikeCriteria">
+          <Form.Group className="mb-3" controlId="EntryType">
             {!leg && <Form.Label>Select Strike Criteria</Form.Label>}
             <Form.Select
-              value={segmentState.strikeCriteria}
+              value={segmentState.EntryType}
               onChange={segmentChange}
             >
               {strikeCriteriaTypes.map(({ type, value }) => {
@@ -85,12 +85,12 @@ export default function SegmentBox({
               })}
             </Form.Select>
           </Form.Group>
-          {segmentState.strikeCriteria ===
+          {segmentState.EntryType ===
             StrikeCriteria.STRIKE_TYPE && (
-            <Form.Group className="mb-3" controlId="strikeType">
+            <Form.Group className="mb-3" controlId="StrikeParameter">
               {!leg && <Form.Label>Strike Type</Form.Label>}
               <Form.Select
-                value={segmentState.strikeType}
+                value={segmentState.StrikeParameter}
                 onChange={segmentChange}
               >
                 {strikeTypes.map(({ type, value }) => {
@@ -103,60 +103,60 @@ export default function SegmentBox({
               </Form.Select>
             </Form.Group>
           )}
-          {segmentState.strikeCriteria ===
+          {segmentState.EntryType ===
             StrikeCriteria.PREMIUM_RANGE && (
             <>
-              <Form.Group className="mb-3" controlId="lowerRange">
+              <Form.Group className="mb-3" controlId="LowerRange">
                 {!leg && <Form.Label>Lower Range</Form.Label>}
                 <Form.Control
                   type="number"
                   min="1"
-                  value={segmentState.lowerRange}
+                  value={segmentState.LowerRange}
                   onChange={segmentChange}
                 />
               </Form.Group>
-              <Form.Group className="mb-3" controlId="upperRange">
+              <Form.Group className="mb-3" controlId="UpperRange">
                 {!leg && <Form.Label>Upper Range</Form.Label>}
                 <Form.Control
                   type="number"
                   min="1"
-                  value={segmentState.upperRange}
+                  value={segmentState.UpperRange}
                   onChange={segmentChange}
                 />
               </Form.Group>
             </>
           )}
-          {segmentState.strikeCriteria ===
+          {segmentState.EntryType ===
             StrikeCriteria.CLOSEST_PREMIUM && (
-            <Form.Group className="mb-3" controlId="premium">
+            <Form.Group className="mb-3" controlId="Premium">
               {!leg && <Form.Label>Premium</Form.Label>}
               <Form.Control
                 type="number"
                 min="1"
-                value={segmentState.premium}
+                value={segmentState.Premium}
                 onChange={segmentChange}
               />
             </Form.Group>
           )}
-          {segmentState.strikeCriteria ===
+          {segmentState.EntryType ===
             StrikeCriteria.STRADDLE_WIDTH && (
             <>
-              <Form.Group className="mb-3" controlId="atmStrike">
+              <Form.Group className="mb-3" controlId="AtmStrike">
                 {!leg && <Form.Label>ATM Strike</Form.Label>}
                 <Form.Select
-                  value={segmentState.atmStrike}
+                  value={segmentState.AtmStrike}
                   onChange={segmentChange}
                 >
                   <option value={AdjustmentType.PLUS}>+</option>
                   <option value={AdjustmentType.MINUS}>-</option>
                 </Form.Select>
               </Form.Group>
-              <Form.Group className="mb-3" controlId="adjustmentFactor">
+              <Form.Group className="mb-3" controlId="AdjustmentFactor">
                 {!leg && <Form.Label>x ATM Straddle Price</Form.Label>}
                 <Form.Control
                   type="number"
                   min="1.5"
-                  value={segmentState.adjustmentFactor}
+                  value={segmentState.AdjustmentFactor}
                   onChange={segmentChange}
                 />
               </Form.Group>
