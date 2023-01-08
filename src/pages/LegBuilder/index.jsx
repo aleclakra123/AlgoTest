@@ -8,14 +8,16 @@ import Leg from "../../components/Leg";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import { Button, Card, Col } from "react-bootstrap";
-import {db} from "../../firebase.js";
+import { db } from "../../firebase.js";
 import { collection, addDoc } from "firebase/firestore";
 import "./index.css";
+import { useNavigate } from "react-router-dom";
 
 export default function LegBuilder() {
   const [legs, setLegs] = useState([]);
   const [segmentValue, setSegmentValue] = useState(SegmentType.OPTIONS);
   const [showAddLegButton, setShowAddLegButton] = useState(false);
+  const navigate = useNavigate();
 
   const addLeg = (leg) => {
     setLegs([...legs, leg]);
@@ -23,8 +25,8 @@ export default function LegBuilder() {
 
   const editLeg = (index, name, value) => {
     legs[index] = {
-        ...legs[index],
-        [name]: value
+      ...legs[index],
+      [name]: value,
     };
     setLegs([...legs]);
   };
@@ -42,25 +44,21 @@ export default function LegBuilder() {
     setShowAddLegButton(!showAddLegButton);
   };
 
-
-  const saveLegs = async ()=>{
+  const saveLegs = async () => {
     try {
       const legRef = collection(db, "legs");
-      await Promise.all(legs.map((leg)=>{
-        return addDoc(legRef, leg);
-      }));
-      console.log("Legs added to firestore: ");
+      await Promise.all(
+        legs.map((leg) => {
+          return addDoc(legRef, leg);
+        })
+      );
     } catch (e) {
       console.error("Error adding legs: ", e);
     }
-  }
-
-  const fetchLegs = ()=>{
-
-  }
+  };
 
   return (
-    <Container>
+    <Container className="mr-50">
       {!showAddLegButton && (
         <Card style={{ padding: "20px" }}>
           <Row>
@@ -100,8 +98,11 @@ export default function LegBuilder() {
           </Row>
         </Card>
       )}
-      {showAddLegButton && <Button onClick={toggleAddLegButton}>Add Leg</Button>}
-      <br /><br />
+      {showAddLegButton && (
+        <Button onClick={toggleAddLegButton}>Add Leg</Button>
+      )}
+      <br />
+      <br />
 
       {legs.length > 0 && <h4>Legs</h4>}
       {legs.map((leg, index) => {
@@ -115,17 +116,27 @@ export default function LegBuilder() {
             deleteLeg={() => {
               deleteLeg(index);
             }}
-            editLeg={(name, value)=>{
-                editLeg(index, name, value);
+            editLeg={(name, value) => {
+              editLeg(index, name, value);
             }}
           />
         );
       })}
-      <br /><br />
+      <br />
+      <br />
       <Row>
         <ButtonGroup>
-          <Button disabled={legs.length === 0} onClick={saveLegs}>Save Legs</Button>
-          <Button onClick={fetchLegs} variant="outline-primary">Fetch Legs</Button>
+          <Button disabled={legs.length === 0} onClick={saveLegs}>
+            Save Legs
+          </Button>
+          <Button
+            variant="outline-primary"
+            onClick={() => {
+              navigate("/legs");
+            }}
+          >
+            Fetch Legs
+          </Button>
         </ButtonGroup>
       </Row>
     </Container>

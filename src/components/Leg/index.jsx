@@ -31,16 +31,16 @@ export default function Leg({ segmentState, copyLeg, deleteLeg, editLeg }) {
               type="checkbox"
               id="SimpleMomentum"
               label="Simple Momentum"
-              checked={segmentState.simpleMomentum}
-              value={segmentState.simpleMomentum}
+              checked={segmentState.SimpleMomentum}
+              value={segmentState.SimpleMomentum}
               onChange={segmentChange}
             />
           </Col>
           <Col>
             <Form.Select
               size="sm"
-              disabled={!segmentState.simpleMomentum}
-              value={segmentState.simpleMomentumType}
+              disabled={!segmentState.SimpleMomentum}
+              value={segmentState.SimpleMomentumType}
               onChange={segmentChange}
               id="SimpleMomentumType"
             >
@@ -55,12 +55,12 @@ export default function Leg({ segmentState, copyLeg, deleteLeg, editLeg }) {
           </Col>
           <Col>
             <Form.Control
-              disabled={!segmentState.simpleMomentum}
+              disabled={!segmentState.SimpleMomentum}
               size="sm"
               type="number"
               min="0"
               id="SimpleMomentumValue"
-              value={segmentState.simpleMomentumValue}
+              value={segmentState.SimpleMomentumValue}
               onChange={segmentChange}
             />
           </Col>
@@ -72,16 +72,16 @@ export default function Leg({ segmentState, copyLeg, deleteLeg, editLeg }) {
               type="checkbox"
               id="TrailStopLoss"
               label="Trail SL"
-              checked={segmentState.trailStopLoss}
-              value={segmentState.trailStopLoss}
+              checked={segmentState.TrailStopLoss}
+              value={segmentState.TrailStopLoss}
               onChange={segmentChange}
             />
           </Col>
           <Col>
             <Form.Select
-              disabled={!segmentState.trailStopLoss}
+              disabled={!segmentState.TrailStopLoss}
               size="sm"
-              value={segmentState.trailStopLossType}
+              value={segmentState.TrailStopLossType}
               onChange={segmentChange}
               id="TrailStopLossType"
             >
@@ -96,23 +96,23 @@ export default function Leg({ segmentState, copyLeg, deleteLeg, editLeg }) {
           </Col>
           <Col>
             <Form.Control
-              disabled={!segmentState.trailStopLoss}
+              disabled={!segmentState.TrailStopLoss}
               size="sm"
               type="number"
               min="0"
               id="TrailStopLossValue1"
-              value={segmentState.trailStopLossValue1}
+              value={segmentState.TrailStopLossValue1}
               onChange={segmentChange}
             />
           </Col>
           <Col>
             <Form.Control
-              disabled={!segmentState.trailStopLoss}
+              disabled={!segmentState.TrailStopLoss}
               size="sm"
               type="number"
               min="0"
               id="TrailStopLossValue2"
-              value={segmentState.trailStopLossValue2}
+              value={segmentState.TrailStopLossValue2}
               onChange={segmentChange}
             />
           </Col>

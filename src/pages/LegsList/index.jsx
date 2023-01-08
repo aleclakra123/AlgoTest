@@ -2,11 +2,12 @@ import React, {useState, useEffect} from 'react';
 import Leg from '../../components/Leg';
 import { collection, getDocs } from "firebase/firestore";
 import {db} from '../../firebase';
-import { Container } from 'react-bootstrap';
+import { Button, Container } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 export default function LegsList() {
-
   const [legs, setLegs] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(()=>{
     let isCancelled = false;;
@@ -33,7 +34,10 @@ export default function LegsList() {
   }, [])
 
   return (
-    <Container>
+    <Container className="mr-50">
+      <Button type="button" onClick={()=>{
+        navigate("/");
+      }}>Add Leg</Button>
       {
         legs.map((leg, index)=>{
           return (<Leg
